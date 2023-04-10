@@ -65,6 +65,15 @@ kotlin {
     }
 }
 
+sqldelight {
+    databases {
+        create("CoffeeDatabase") {
+            packageName.set("com.llinsoft.onecupappkmm.database")
+            sourceFolders.set(listOf("sqldelight"))
+        }
+    }
+}
+
 android {
     namespace = "com.llinsoft.onecupappkmm"
     compileSdk = 33
