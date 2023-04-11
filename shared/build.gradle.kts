@@ -28,6 +28,7 @@ kotlin {
             dependencies {
                 implementation("app.cash.sqldelight:runtime:2.0.0-alpha05")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             }
         }
         val commonTest by getting {
