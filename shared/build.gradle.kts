@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("app.cash.sqldelight") version "2.0.0-alpha05"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
 }
 
 kotlin {
@@ -29,6 +30,7 @@ kotlin {
                 implementation("app.cash.sqldelight:runtime:2.0.0-alpha05")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
             }
         }
         val commonTest by getting {
