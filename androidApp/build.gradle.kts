@@ -40,6 +40,8 @@ android {
     }
 }
 
+//apply(plugin = "com.google.gms.google-services")
+
 dependencies {
     implementation(project(":shared"))
     implementation("androidx.compose.ui:ui:1.4.1")

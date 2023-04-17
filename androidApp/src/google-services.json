@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626653601984",
+    "project_id": "onecupappkmm",
+    "storage_bucket": "onecupappkmm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626653601984:android:6af7bfaf970c800e910d25",
+        "android_client_info": {
+          "package_name": "com.llinsoft.onecupappkmm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626653601984-qn2jora33k8n2odhijnun8iim924eqmc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArUu8p4PdD-B77AL20r8kLmhUFSK7-28I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626653601984-85cksbkl34ov0nl4gbqj8f6a4htvt0kn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
