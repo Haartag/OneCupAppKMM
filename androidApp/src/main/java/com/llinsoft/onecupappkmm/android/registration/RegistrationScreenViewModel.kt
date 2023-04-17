@@ -3,7 +3,7 @@ package com.llinsoft.onecupappkmm.android.registration
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.llinsoft.onecupappkmm.Resource
+import com.llinsoft.onecupappkmm.Status
 import com.llinsoft.onecupappkmm.domain.firebase.FirebaseManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -63,12 +63,12 @@ class RegistrationScreenViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             val result = firebaseManager.signUpWithEmail(email = email, password = password)
-            when (result) {
-                is Resource.Success -> {
+            when (result.status) {
+                Status.SUCCESS  -> {
                     cancelLoading()
                     //TODO Navigation
                 }
-                is Resource.Error -> {
+                Status.ERROR -> {
                     cancelLoading()
                     //TODO Error handling
                 }

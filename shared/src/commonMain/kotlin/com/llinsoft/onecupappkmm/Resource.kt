@@ -1,6 +1,19 @@
 package com.llinsoft.onecupappkmm
 
-sealed class Resource<out T> {
-    data class Success<out T>(val data: T) : Resource<T>()
-    data class Error(val message: String) : Resource<Nothing>()
+data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+    companion object {
+        fun <T> Success(data: T?): Resource<T> {
+            return Resource(Status.SUCCESS, data, null)
+        }
+
+        fun <T> Error(msg: String, data: T? = null): Resource<T> {
+            return Resource(Status.ERROR, data, msg)
+        }
+
+    }
+}
+
+enum class Status {
+    SUCCESS,
+    ERROR
 }
