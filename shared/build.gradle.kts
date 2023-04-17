@@ -22,6 +22,8 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true //If "framework not found FirebaseAuth" error.
+            //linkerOpts("-ObjC") // Prevent linker error ??? - no!
         }
     }
 
@@ -53,6 +55,7 @@ kotlin {
         val iosMain by creating {
             dependencies {
                 implementation("app.cash.sqldelight:native-driver:2.0.0-alpha05")
+                implementation("dev.gitlive:firebase-auth:1.8.0")
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
