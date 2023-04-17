@@ -13,9 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 
 @Composable
-fun FirebaseEmailRegForm(
+fun RegistrationScreen(
+    navController: NavController,
     viewModel: RegistrationScreenViewModel = hiltViewModel(),
 ) {
 
