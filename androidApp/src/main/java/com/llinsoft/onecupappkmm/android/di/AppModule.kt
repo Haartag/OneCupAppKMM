@@ -1,5 +1,6 @@
 package com.llinsoft.onecupappkmm.android.di
 
+import com.llinsoft.onecupappkmm.domain.firebase.ErrorHandler
 import com.llinsoft.onecupappkmm.domain.firebase.FirebaseManager
 import dagger.Module
 import dagger.Provides
@@ -15,5 +16,11 @@ object AppModule {
     @Singleton
     fun provideFirebaseManager(): FirebaseManager {
         return FirebaseManager()
+    }
+
+    @Provides
+    @Singleton
+    fun provideErrorHandler(): ErrorHandler {
+        return ErrorHandler()
     }
 }
