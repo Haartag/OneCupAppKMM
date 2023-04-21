@@ -4,7 +4,6 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Snackbar
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -16,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.llinsoft.onecupappkmm.android.Screen
+import com.llinsoft.onecupappkmm.android.common_composables.ErrorSnackbar
 
 @Composable
 fun LoginScreen(
@@ -29,7 +29,7 @@ fun LoginScreen(
         enter = slideInVertically() + fadeIn(),
         exit = slideOutVertically() + fadeOut()
     ) {
-        LoginScreenError(message = state.snackbarMessage)
+        ErrorSnackbar(message = state.snackbarMessage)
     }
 
     Column() {
@@ -82,20 +82,5 @@ fun EmailLogin(
         }) {
             Text(text = "Sign up")
         }
-    }
-}
-
-@Composable
-fun LoginScreenError(
-    message: String
-) {
-    Snackbar(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        Text(
-            text = message,
-        )
     }
 }
