@@ -13,4 +13,14 @@ class ErrorHandler {
             else -> "An unknown error occurred"
         }
     }
+
+    fun getRegistrationErrorText(error: String): String {
+        return when(error) {
+            ErrorTexts.FirebaseRegistration.SAME.errorText -> "Error: An account with this email " +
+                    "already exists. Please try another email or log in to your existing account."
+            ErrorTexts.FirebaseRegistration.NOEMAIL.errorText -> "Error: Invalid email format. " +
+                    "Please enter a valid email address. "
+            else -> "An unknown error occurred"
+        }
+    }
 }
