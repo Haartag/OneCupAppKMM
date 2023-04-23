@@ -12,6 +12,7 @@ import shared
 extension LoginScreen {
     @MainActor class LoginScreenViewModel: ObservableObject {
         private let firebaseManager = FirebaseManager()
+        private let errorHandler = ErrorHandler()
         
         @Published var email: String = ""
         @Published var password: String = ""
@@ -34,7 +35,10 @@ extension LoginScreen {
                     // TODO: Navigation
                 case .error:
                     self.isLoading = false
-                    // TODO: Error handling
+                    self.snackbarMessage = self.errorHandler.getLoginErrorText(error: result.message ?? "")
+                    print(result.message ?? "")
+                    print(self.snackbarMessage)
+                    self.isSnackbarVisible = true
                 default:
                     self.isLoading = false
                 }

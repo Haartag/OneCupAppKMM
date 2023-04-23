@@ -13,6 +13,7 @@ struct LoginScreen: View {
     @StateObject var viewModel = LoginScreenViewModel()
 
     var body: some View {
+        
         VStack {
             TextField("Email address", text: $viewModel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -29,6 +30,16 @@ struct LoginScreen: View {
             NavigationLink(destination: FirebaseEmailRegForm()) {
                 Text("Sign up")
             }
+        }
+        .alert(isPresented: Binding<Bool>(
+            get: {viewModel.isSnackbarVisible},
+            set: {_ in viewModel.isSnackbarVisible = false}
+        )) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.snackbarMessage),
+                dismissButton: .default(Text("OK"))
+            )
         }
         Spacer()
     }
