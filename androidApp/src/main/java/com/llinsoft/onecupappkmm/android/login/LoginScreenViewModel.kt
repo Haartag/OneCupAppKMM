@@ -26,22 +26,39 @@ class LoginScreenViewModel @Inject constructor(
     private val email = savedStateHandle.getStateFlow("email", "")
     private val password = savedStateHandle.getStateFlow("password", "")
     private val isLoading = savedStateHandle.getStateFlow("isLoading", false)
+
     private val isSnackbarVisible = savedStateHandle.getStateFlow("isSnackbarVisible", false)
     private val snackbarMessage = savedStateHandle.getStateFlow("snackbarMessage", "An unknown error occurred")
 
-    val state = combine(
+    val textFieldsState = combine(
         email,
         password,
         isLoading,
-        isSnackbarVisible,
-        snackbarMessage
-    ) { email, password, isLoading, isSnackbarVisible, snackbarMessage ->
-        LoginState(
+    ) { email, password, isLoading ->
+        LoginTextFieldsState(
             username = email,
             password = password,
             isLoading = isLoading,
-            isSnackbarVisible = isSnackbarVisible,
-            snackbarMessage = snackbarMessage
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), LoginTextFieldsState())
+
+    val errorState = combine(
+        isSnackbarVisible,
+        snackbarMessage
+    ) { isSnackbarVisible, snackbarMessage ->
+        LoginErrorState(
+        isSnackbarVisible = isSnackbarVisible,
+        snackbarMessage = snackbarMessage
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), LoginErrorState())
+
+    val state = combine(
+        textFieldsState,
+        errorState
+    ) { textFieldsState, errorState ->
+        LoginState(
+            loginTextFieldState = textFieldsState,
+            loginErrorState = errorState
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), LoginState())
 

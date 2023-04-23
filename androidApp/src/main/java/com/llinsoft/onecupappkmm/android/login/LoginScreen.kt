@@ -25,17 +25,17 @@ fun LoginScreen(
     val state by viewModel.state.collectAsState()
 
     AnimatedVisibility(
-        visible = state.isSnackbarVisible,
+        visible = state.loginErrorState.isSnackbarVisible,
         enter = slideInVertically() + fadeIn(),
         exit = slideOutVertically() + fadeOut()
     ) {
-        ErrorSnackbar(message = state.snackbarMessage)
+        ErrorSnackbar(message = state.loginErrorState.snackbarMessage)
     }
 
     Column() {
         EmailLogin(
-            username = state.username,
-            password = state.password,
+            username = state.loginTextFieldState.username,
+            password = state.loginTextFieldState.password,
             navController = navController
         )
         Spacer(modifier = Modifier.weight(1f))
