@@ -1,7 +1,7 @@
 package com.llinsoft.onecupappkmm.domain.serialization
 
 import com.llinsoft.onecupappkmm.domain.database.TemplateEntry
-import com.llinsoft.onecupappkmm.domain.firebase.PasswordRules
+import com.llinsoft.onecupappkmm.domain.firebase.auth.PasswordRules
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -16,11 +16,11 @@ class Serialization {
         return Json.decodeFromString(json)
     }
 
-    fun pack(list: List<TemplateEntry>): String {
+    fun TemplateToString(list: List<TemplateEntry>): String {
         return Json.encodeToString(list)
     }
 
-    fun unpack(json: String): List<TemplateEntry> {
+    fun stringToTemplate(json: String): List<TemplateEntry> {
         return Json.decodeFromString(json)
     }
 }
